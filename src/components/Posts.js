@@ -1,22 +1,47 @@
+import PostContainer from "./PostContainer";
+import React, {useState} from "react";
+import { collection, addDoc } from "firebase/firestore";
+import {db} from '../FirebaseConfiguration';
+import { Form } from "react-router-dom";
+
 function Posts() {
+    const [postTitle, setPostTitle] = useState("");
+    const [postBody, setPostBody]= useState("");
+    
+    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    let date = new Date().toLocaleDateString('es-ES', options);
+    
+    const handlePostChange = (e) => {
+        setPostBody(e.target.value);
+    };
+
+    const handleTitleChange = (e) => {
+        setPostTitle(e.target.value);
+    };
+
+    const addPost = async (e) => {
+        e.preventDefault();
+        const sendPost = await addDoc(collection(db, 'posts'), {
+            postUser: "Kemyl",
+            created: date,
+            postTitle: postTitle,
+            postBody: postBody,
+        })
+       document.getElementById("Form").reset();
+    };
     return (
         <div className="Post-Container">
             <div className="NewPost">
-                <textarea type="text" id="NewPostInput" placeholder="Crear Nuevo Post"></textarea>
-                <div className="NewPost-Buttons">
-                    <button id="LimpiarButton" type="button">Limpiar</button>
-                    <button id="PublicarButton" type="button">Publicar</button>
-                </div>
-            </div>
-            <div className="PostList">
-                <div className="Post">
-                    <div>
-                        <p>Publicado por: Username @ Fecha</p>
+                <h5>Titulo del Post</h5>
+                <form id="Form" onSubmit={addPost}>
+                    <input type="text" id="NewPostTitle" placeholder="Titulo del Post" onChange={handleTitleChange} required/>
+                    <textarea type="text" id="NewPostBody" placeholder="Crear Nuevo Post" onChange={handlePostChange} required></textarea>
+                    <div className="NewPost-Buttons">
+                        <input id="PublicarButton" type="submit" value="Publicar"/>
                     </div>
-                    <h4>Kemyl Fernandez</h4>
-                    <p className="Post-Text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet mattis arcu. Proin dictum tortor libero, eu convallis tortor egestas eget. Aliquam erat volutpat. Donec dictum nulla libero, nec euismod odio placerat ut. Morbi tincidunt, mi in fringilla vulputate, tortor felis faucibus nisi, et bibendum lorem lectus vitae enim. Cras in rutrum nibh. Duis fermentum lectus quis metus molestie, eu ultrices turpis rutrum. Nullam ornare interdum consequat. Nam maximus lobortis ligula, non pulvinar orci tincidunt sit amet. Fusce cursus, arcu vitae rutrum aliquet, nunc metus lobortis nulla, sit amet imperdiet enim felis sit amet sem. Aenean pulvinar lacus vitae ligula volutpat, vel aliquet ligula vehicula. Proin porta porttitor consequat. Duis laoreet ut erat a porta. Fusce fermentum lorem tortor, quis aliquet risus posuere auctor.</p>
-                </div>
+                </form>
             </div>
+            <PostContainer data={postBody}/>
         </div>
     )
 }

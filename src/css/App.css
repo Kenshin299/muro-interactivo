@@ -10,14 +10,14 @@
   color: #61dafb;
 }
 
-button {
+input[type="submit"] {
   font-family: 'Roboto Mono';
   font-style: bold;
   background-color: #ffffff;
   color: #000000;
 }
 
-button:hover {
+input[type="submit"]:hover {
   background-color: #000000;
   color: #ffffff;
   transform: scale(1.02);
@@ -76,6 +76,16 @@ button:hover {
   min-width: 20vw;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: min-content;
+  max-height: min-content;
+  margin-top: 10px;
+}
+
 textarea {
   height:  6em;
   width: 50vw;
@@ -83,14 +93,23 @@ textarea {
   border-radius: 4px;
 }
 
+input {
+  height: 2.5em;
+  width: 50vw;
+  border: none;
+  border-radius: 4px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
 .NewPost-Buttons {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  align-self: self-end;
+  justify-content: flex-end;
 }
 
-.NewPost-Buttons > button {
+.NewPost-Buttons > input {
   height: 2.5em;
   width: 10vw;
   min-width: max-content;
