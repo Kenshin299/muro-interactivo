@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.NavBar {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: calc(10px + 2vmin);
+  padding: 0.5em;
+}
+
+.NavButtons {
+  display: flex;
+  gap: 20px;
+}
+
+.Button {
+  background-color: #45af64;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+}
+
+
+
+.Post-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  margin: 20px;
+  padding: 20px;
+  padding-right: 30px;
+}
+
+.NewPost {
+  background-color: #1d4f8c;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 20vw;
+}
+
+.Post {
+  background-color: #1d4f8c;
+  max-width: fit-content;
+  max-height: fit-content;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.App-link {
+  color: #61dafb;
+}
