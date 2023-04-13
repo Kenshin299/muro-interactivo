@@ -2,11 +2,11 @@ import PostContainer from "./PostContainer";
 import React, {useState} from "react";
 import { collection, addDoc } from "firebase/firestore";
 import {db} from '../FirebaseConfiguration';
-import { Form } from "react-router-dom";
 
 function Posts() {
     const [postTitle, setPostTitle] = useState("");
     const [postBody, setPostBody]= useState("");
+    const [isSent, setIsSent] = useState(false);
     
     const options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
     let date = new Date().toLocaleDateString('es-ES', options);
@@ -28,6 +28,7 @@ function Posts() {
             postBody: postBody,
         })
        document.getElementById("Form").reset();
+       setIsSent(prevCheck => !prevCheck);
     };
     return (
         <div className="Post-Container">
@@ -41,7 +42,10 @@ function Posts() {
                     </div>
                 </form>
             </div>
-            <PostContainer data={postBody}/>
+            <div className="hSeparator">
+                <h5>Posts del Muro</h5>
+            </div>
+            <PostContainer isSent={isSent}/>
         </div>
     )
 }
