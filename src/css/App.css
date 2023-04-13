@@ -40,7 +40,7 @@ input[type="submit"]:hover {
   gap: 20px;
 }
 
-.NavButtons > button:hover {
+.Button:hover {
   background-color: #9ffcf7;
   color: #000000;
   transform: scale(1.02);
@@ -81,7 +81,6 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: min-content;
   max-height: min-content;
   margin-top: 10px;
 }
@@ -109,7 +108,7 @@ input {
   justify-content: flex-end;
 }
 
-.NewPost-Buttons > input {
+input[type="submit"] {
   height: 2.5em;
   width: 10vw;
   min-width: max-content;
@@ -145,10 +144,35 @@ input {
 
 .userInfo {
   font-family: 'Menlo Regular';
-  font-size: 12px;
+  font-size: 11px;
   color: #f3f3f3;
 }
 
 .Post-Text {
   padding: 3px 0 0 5px;
+}
+
+.SignUp-Container {
+  background-color: #1A1A1B;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+  max-width: fit-content;
+  min-height: 30vh;
+  margin: 5% auto 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.SignUp-Container > h1, p {
+  align-self: center;
+} 
+
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

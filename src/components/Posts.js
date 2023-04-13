@@ -30,6 +30,7 @@ function Posts() {
        document.getElementById("Form").reset();
        setIsSent(prevCheck => !prevCheck);
     };
+    
     return (
         <div className="Post-Container">
             <div className="NewPost">
