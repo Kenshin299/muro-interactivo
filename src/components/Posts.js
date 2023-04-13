@@ -3,7 +3,10 @@ function Posts() {
         <div className="Post-Container">
             <div className="NewPost">
                 <textarea type="text" id="NewPostInput" placeholder="Crear Nuevo Post"></textarea>
-                <button type="button">Publicar</button>
+                <div className="NewPost-Buttons">
+                    <button id="LimpiarButton" type="button">Limpiar</button>
+                    <button id="PublicarButton" type="button">Publicar</button>
+                </div>
             </div>
             <div className="PostList">
                 <div className="Post">

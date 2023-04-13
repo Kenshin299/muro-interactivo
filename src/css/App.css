@@ -30,8 +30,6 @@
   padding: 8px;
 }
 
-
-
 .Post-Container {
   display: flex;
   flex-direction: column;
@@ -44,10 +42,38 @@
 }
 
 .NewPost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #1d4f8c;
   padding: 20px;
   border-radius: 10px;
   min-width: 20vw;
+}
+
+textarea {
+  height:  6em;
+  width: 50vw;
+  border: none;
+  border-radius: 4px;
+}
+
+.NewPost-Buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-self: self-end;
+}
+
+.NewPost-Buttons > button {
+  height: 2.5em;
+  width: 10vw;
+  min-width: max-content;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .Post {
