@@ -8,7 +8,7 @@ By Kemyl Fernandez Bonifacio 2021-2302
 
 # Signup
 
-![Segunda Captura de Pantalla](/src/img/Muro6.png)
+![Segunda Captura de Pantalla](/src/img/Muro8.png)
 
 # Login
 
