@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom';
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from 'react';
 import { auth } from '../FirebaseConfiguration';
 import {  signOut } from "firebase/auth";
 
-function NavBar() {
-    const [isAuth, setIsAuth] = useState(false);
- 
+function NavBar(props) {
     const handleLogout = () => {               
         signOut(auth).then(() => {
         // Sign-out successful.
@@ -16,28 +12,10 @@ function NavBar() {
         });
     }
 
-    useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/firebase.User
-              const uid = user.uid;
-              setIsAuth(true);
-              // ...
-              console.log("uid", uid)
-            } else {
-              // User is signed out
-              // ...
-              setIsAuth(false);
-              console.log("user is logged out")
-            }
-          });
-    }, [])
-
     return (
         <div className="NavBar">
             <h3 id="Muro">Muro Interactivo</h3>
-                {!isAuth ? (
+                {!props.auth ? (
                     <div className="NavButtons">
                         <Link to="/login">
                             <button className="Button" id="Login" type="button">Iniciar Sesión</button>
@@ -48,7 +26,7 @@ function NavBar() {
                     </div>
                 ) : (
                     <div className="NavButtons">
-                        <Link to="/login">
+                        <Link to="/">
                             <button className="Button" id="SignOut" type="button" onClick={handleLogout}>Cerrar Sesion</button>
                         </Link>
                     </div> 

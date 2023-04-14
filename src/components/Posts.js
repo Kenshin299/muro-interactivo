@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import { collection, addDoc } from "firebase/firestore";
 import {db} from '../FirebaseConfiguration';
 
-function Posts() {
+function Posts(props) {
     const [postTitle, setPostTitle] = useState("");
     const [postBody, setPostBody]= useState("");
     const [isSent, setIsSent] = useState(false);
@@ -33,16 +33,32 @@ function Posts() {
     
     return (
         <div className="Post-Container">
-            <div className="NewPost">
-                <h5>Titulo del Post</h5>
-                <form id="Form" onSubmit={addPost}>
-                    <input type="text" id="NewPostTitle" placeholder="Titulo del Post" onChange={handleTitleChange} required/>
-                    <textarea type="text" id="NewPostBody" placeholder="Crear Nuevo Post" onChange={handlePostChange} required></textarea>
-                    <div className="NewPost-Buttons">
-                        <input id="PublicarButton" type="submit" value="Publicar"/>
+                {!props.auth ? (
+                    <div className="NewPost">
+                        <h5>Para publicar un Post debe Iniciar Sesión</h5>
                     </div>
-                </form>
-            </div>
+                ) : (
+                    <div className="NewPost">
+                        <h5>Titulo del Post</h5>
+                        <form id="Form" onSubmit={addPost}>
+                            <input 
+                                type="text" 
+                                id="NewPostTitle" 
+                                placeholder="Titulo del Post" 
+                                onChange={handleTitleChange} required
+                            />
+                            <textarea 
+                                type="text" 
+                                id="NewPostBody" 
+                                placeholder="Crear Nuevo Post" 
+                                onChange={handlePostChange} required>
+                            </textarea>
+                            <div className="NewPost-Buttons">
+                                <input id="PublicarButton" type="submit" value="Publicar"/>
+                            </div>
+                        </form>
+                    </div>
+                )}
             <div className="hSeparator">
                 <h5>Posts del Muro</h5>
             </div>

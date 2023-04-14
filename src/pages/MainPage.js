@@ -1,9 +1,9 @@
 import Posts from '../components/Posts'
 
-function MainPage() {
+function MainPage(props) {
     return (
         <div>
-            <Posts />
+            <Posts auth={props.auth}/>
         </div>
     )
 }
