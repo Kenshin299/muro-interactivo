@@ -6,8 +6,12 @@
   text-align: center;
 }
 
-.App-link {
+a {
   color: #61dafb;
+}
+
+a:hover {
+  color:#45af64;
 }
 
 input[type="submit"] {
